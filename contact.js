@@ -15,6 +15,7 @@ if (params.photo) {
     photoElement.style.display = 'block';
 }
 
+// Display other contact details
 document.getElementById('name').innerText = params.name || "N/A";
 document.getElementById('phone').innerText = params.phone ? params.phone.split(',').join(', ') : "N/A";
 document.getElementById('email').innerText = params.email ? params.email.split(',').join(', ') : "N/A";
