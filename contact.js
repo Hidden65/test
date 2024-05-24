@@ -1,48 +1,25 @@
-// Add to Contacts button functionality
-document.getElementById('addToContacts').addEventListener('click', function() {
-    let contactName = document.getElementById('name').innerText;
-    let contactPhone = document.getElementById('phone').innerText;
-    let contactEmail = document.getElementById('email').innerText;
-    let contactAddress = document.getElementById('address').innerText;
-    let contactJob = document.getElementById('job').innerText;
-    let contactCompany = document.getElementById('company').innerText;
-    let contactWebsite = document.getElementById('website').innerText;
-    let contactFacebook = document.getElementById('facebook').innerText;
-    let contactInstagram = document.getElementById('instagram').innerText;
-    let contactWhatsApp = document.getElementById('whatsapp').innerText;
-    
-    // Create vCard content
-    let vCardData = `BEGIN:VCARD
-VERSION:3.0
-FN:${contactName}
-TEL:${contactPhone}
-EMAIL:${contactEmail}
-ADR:${contactAddress}
-ORG:${contactCompany}
-TITLE:${contactJob}
-URL:${contactWebsite}
-X-SOCIALPROFILE;type=facebook:${contactFacebook}
-X-SOCIALPROFILE;type=instagram:${contactInstagram}
-X-SOCIALPROFILE;type=whatsapp:${contactWhatsApp}
-END:VCARD`;
-    
-    // Create a Blob from the vCard data
-    let blob = new Blob([vCardData], { type: 'text/vcard' });
+function getQueryParams() {
+    let params = {};
+    window.location.search.substring(1).split("&").forEach(function(part) {
+        let pair = part.split("=");
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    });
+    return params;
+}
 
-    // Create a URL for the Blob
-    let url = URL.createObjectURL(blob);
+let params = getQueryParams();
 
-    // Create a temporary link element
-    let link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'contact.vcf');
-    link.style.display = 'none';
+// Display received parameters (for debugging)
+console.log("Received Parameters:", params);
 
-    // Append the link to the body and trigger the click event
-    document.body.appendChild(link);
-    link.click();
-
-    // Clean up: remove the link and revoke the URL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-});
+// Display contact details
+document.getElementById('name').innerText = params.name || "N/A";
+document.getElementById('phone').innerText = params.phone || "N/A";
+document.getElementById('email').innerText = params.email || "N/A";
+document.getElementById('address').innerText = params.address || "N/A";
+document.getElementById('job').innerText = params.job || "N/A";
+document.getElementById('company').innerText = params.company || "N/A";
+document.getElementById('website').innerText = params.website || "N/A";
+document.getElementById('facebook').innerText = params.facebook || "N/A";
+document.getElementById('instagram').innerText = params.instagram || "N/A";
+document.getElementById('whatsapp').innerText = params.whatsapp || "N/A";
