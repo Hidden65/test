@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <form id="qrForm">
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <div id="mobileNumbers">
+                <label for="mobile1">Mobile Number:</label>
+                <input type="tel" id="mobile1" name="mobile[]" required>
+            </div>
+            <button type="button" id="addMobile">Add More Mobile Numbers</button>
+
+            <div id="emails">
+                <label for="email1">Email:</label>
+                <input type="email" id="email1" name="email[]" required>
+            </div>
+            <button type="button" id="addEmail">Add More Email Addresses</button>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address">
+
+            <label for="job">Job:</label>
+            <input type="text" id="job" name="job">
+
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company">
+
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website">
+
+            <label for="facebook">Facebook:</label>
+            <input type="url" id="facebook" name="facebook">
+
+            <label for="instagram">Instagram:</label>
+            <input type="url" id="instagram" name="instagram">
+
+            <label for="whatsapp">WhatsApp:</label>
+            <input type="tel" id="whatsapp" name="whatsapp">
+
+            <button type="button" id="generate">Generate QR Code</button>
+        </form>
+        <div id="qrcode"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
