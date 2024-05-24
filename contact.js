@@ -10,8 +10,9 @@ function getQueryParams() {
 let params = getQueryParams();
 
 if (params.photo) {
+    let photoUrl = decodeURIComponent(params.photo); // Decode the URL
     let photoElement = document.getElementById('photo');
-    photoElement.src = params.photo;
+    photoElement.src = photoUrl;
     photoElement.style.display = 'block';
 }
 
