@@ -3,17 +3,31 @@ document.getElementById('addToContacts').addEventListener('click', function() {
     let contactName = document.getElementById('name').innerText;
     let contactPhone = document.getElementById('phone').innerText;
     let contactEmail = document.getElementById('email').innerText;
-
-    // Create a VCF (vCard) string
-    let vcfData = `BEGIN:VCARD
+    let contactAddress = document.getElementById('address').innerText;
+    let contactJob = document.getElementById('job').innerText;
+    let contactCompany = document.getElementById('company').innerText;
+    let contactWebsite = document.getElementById('website').innerText;
+    let contactFacebook = document.getElementById('facebook').innerText;
+    let contactInstagram = document.getElementById('instagram').innerText;
+    let contactWhatsApp = document.getElementById('whatsapp').innerText;
+    
+    // Create vCard content
+    let vCardData = `BEGIN:VCARD
 VERSION:3.0
 FN:${contactName}
 TEL:${contactPhone}
 EMAIL:${contactEmail}
+ADR:${contactAddress}
+ORG:${contactCompany}
+TITLE:${contactJob}
+URL:${contactWebsite}
+X-SOCIALPROFILE;type=facebook:${contactFacebook}
+X-SOCIALPROFILE;type=instagram:${contactInstagram}
+X-SOCIALPROFILE;type=whatsapp:${contactWhatsApp}
 END:VCARD`;
-
-    // Create a Blob from the VCF data
-    let blob = new Blob([vcfData], { type: 'text/vcard' });
+    
+    // Create a Blob from the vCard data
+    let blob = new Blob([vCardData], { type: 'text/vcard' });
 
     // Create a URL for the Blob
     let url = URL.createObjectURL(blob);
